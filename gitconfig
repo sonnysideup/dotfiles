@@ -1,0 +1,19 @@
+[user]
+	name = S.R.Garcia
+	email = sonny.ruben@gmail.com
+[color]
+	branch = auto
+	diff = auto
+	grep = auto
+	interactive = auto
+	status = auto
+[core]
+	excludesfile = /Users/sonny/.gitignore
+	editor = vim
+[alias]
+	co = checkout
+	st = status
+	br = branch
+	df = diff
+[merge]
+	renameLimit = 5090
