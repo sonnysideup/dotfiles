@@ -1,7 +1,9 @@
+gems = %w(awesome_print)
+
 begin
   require "rubygems"
-  require "awesome_print"
-  AwesomePrint.irb!
+  gems.each { |x| require x }
+  #AwesomePrint.irb!
 rescue LoadError
   puts "rubygems load failure in ~/.irbrc"
 end

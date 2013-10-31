@@ -1,6 +1,6 @@
 [user]
 	name = S.R.Garcia
-	email = sonny.ruben@gmail.com
+	email = sonnygarcia@icloud.com
 [color]
 	branch = auto
 	diff = auto
@@ -15,5 +15,6 @@
 	st = status
 	br = branch
 	df = diff
+	cm = commit -v
 [merge]
 	renameLimit = 5090
