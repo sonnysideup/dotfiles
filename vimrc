@@ -79,4 +79,4 @@ endfunction
 "" --- Plugins ---
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " enable ctrlp fuzzy finder
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath^=~/.vim/bundle/ctrlp.vim,~/.vim/bundle/vim-endwise
