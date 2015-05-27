@@ -18,8 +18,6 @@ set nohlsearch      " don't continue to highlight searched phrases
 set incsearch       " highlight as you type your search
 set ignorecase      " make searches case-insensitive
 set smartcase       " case-sensitive when using uppercase characters
-
-"set list                    " display hidden characters
 set listchars=tab:▸\ ,eol:¬ " set symbols to use in 'list' mode
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -31,7 +29,14 @@ set expandtab     " use spaces in place of tab characters
 set tabstop=2     " tab character counts for 2 spaces
 set softtabstop=2 " tab and bspace count for 2 spaces in INSERT mode
 set shiftwidth=2  " number of spaces to use for each ident
-set textwidth=80  " maximum number of characters per line
+"set textwidth=80  " maximum number of characters per line
+
+" EXPERIMENTAL
+set clipboard+=unnamed " enable dual-direction clipboard sharing
+set colorcolumn=80
+"highlight ColorColumn ctermbg=4
+set backspace=2 " fix backspace in homebrew version of Vim
+"set fdm=indent " zm & zr collapse and expand, respectively; use Shift for all
 
 " delete trailing whitespace on write
 autocmd BufWritePre, * :call Preserve("%s/\\s\\+$//e")
@@ -43,15 +48,14 @@ autocmd BufNewFile,BufRead *.json set filetype=javascript
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" --- Key Mappings ---
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let mapleader = ',' " change the default leader key ('\')
+let mapleader = ' ' " change the default leader key ('\')
 
-nmap <leader>l :set list!<CR>           " toggle hidden chars
-nmap <leader>n :set relativenumber!<CR> " toggle linenumbers
-nmap <leader>p :set paste!<CR>          " toggle paste mode
-map <leader>cd :cd %:p:h<CR>:pwd<CR>    " use cwd of open buffer
-
-" toggle alternate file
-map <leader>a :edit#<cr>
+nmap <leader>l :set list!<CR>             " toggle hidden chars
+nmap <leader>n :set relativenumber!<CR>   " toggle linenumbers
+nmap <leader>p :set paste!<CR>            " toggle paste mode
+map <leader>lcd :lcd %:p:h<CR>:pwd<CR>    " use cwd of open buffer
+map <leader>a :edit#<CR>                  " toggle alternate file
+"map <leader>gc :CtrlP app/controllers/
 
 " map window focus navigation
 map <C-h> <C-w>h
@@ -78,5 +82,22 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" --- Plugins ---
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" enable ctrlp fuzzy finder
-set runtimepath^=~/.vim/bundle/ctrlp.vim,~/.vim/bundle/vim-endwise
+" manage plugins and runtime files using pathogen
+execute pathogen#infect()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" --- Misc Settings ---
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Search from current directory instead of project root
+let g:ctrlp_working_path_mode = 0
+
+" Ignore files types in netrw
+let g:netrw_list_hide = '.*\.pyc$'
+
+set wildignore+=*.pyc
+
+let base16colorspace=256
+set background=dark
+colorscheme base16-default
+
