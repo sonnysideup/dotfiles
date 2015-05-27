@@ -1,6 +1,6 @@
 [user]
-	name = Sonny Garcia
-	email = sonnygarcia@icloud.com
+	name = Bernhard Kohler
+	email = bernhardkohler@icloud.com
 [color]
 	branch = auto
 	diff = auto
@@ -16,5 +16,9 @@
 	br = branch
 	df = diff
 	cm = commit -v
+	ps = push
+	pl = pull
 [merge]
 	renameLimit = 5090
+[push]
+	default = simple
