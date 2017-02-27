@@ -1,0 +1,4 @@
+# global ignore file
+
+.DS_Store
+*.swp

@@ -3,3 +3,14 @@
 	co = checkout
 	br = branch
 	cm = commit
+	df = diff
+	ps = push
+	pl = pull
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore
+[user]
+	name = Sonny Garcia
+	email = sonnygarcia@icloud.com
+[commit]
+	verbose = true
