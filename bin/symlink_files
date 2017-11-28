@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# TODO get rootdir
+
+ln -s "$(pwd)/tmux.conf" ~/.tmux.conf
+ln -s "$(pwd)/gitconfig" ~/.gitconfig
+ln -s "$(pwd)/gitignore" ~/.gitignore

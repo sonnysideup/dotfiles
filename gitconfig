@@ -6,6 +6,7 @@
 	df = diff
 	ps = push
 	pl = pull
+	cf = config
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore

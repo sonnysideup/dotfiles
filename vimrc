@@ -15,6 +15,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'hashivim/vim-terraform'
 Plugin 'tpope/vim-fireplace'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'mustache/vim-mustache-handlebars'
 
 " color schemes
 Plugin 'chriskempson/base16-vim'
@@ -45,6 +46,8 @@ set ruler
 set nowrap
 set incsearch
 set cursorline
+set cursorcolumn
+set colorcolumn=80
 set relativenumber
 set backspace=indent,eol,start " fix backspace in vIM 8.0
 
