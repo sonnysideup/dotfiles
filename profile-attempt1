@@ -1,0 +1,89 @@
+RESET="\[$(tput sgr0)\]"
+GREEN="\[$(tput setaf 2)\]"
+ORANGE="\[$(tput setaf 3)\]"
+
+# change terminal prompt
+#export PS1="${GREEN}\u@\h${RESET}:${ORANGE}\W ${RESET}-> "
+#export PS1="\u@\h -> "
+
+# enable terminal colors
+export CLICOLOR=1
+
+# enable base16 shell
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+
+# bash completion
+if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
+  . $(brew --prefix)/share/bash-completion/bash_completion
+fi
+
+# load rbenv automatically
+eval "$(rbenv init -)"
+
+# default editor
+export EDITOR=$(which vim)
+
+# terraform configs
+export TF_VAR_ssh_key_name="am1-prd-kp"
+export TF_VAR_ssh_key_path="~/.ssh/$TF_VAR_ssh_key_name.pem"
+
+# chef envvars
+export CHEF_VERSION=12.16.42
+export CHEF_DATA_BAGS_PATH=~/code/chef-repo/data_bags
+export CHEF_SECRET_KEY_PATH=~/.chef/encrypted_data_bag_secret
+
+# add local bin path
+export PATH="$HOME/.bin":$PATH
+
+# aliases
+alias ll='ls -l'
+alias tree='tree -C'
+
+alias dc='docker-compose'
+complete -F _docker_compose dc
+
+#alias kc='kubectl'
+# TODO add after bug is fixed: https://github.com/kubernetes/kubectl/issues/120
+#complete -o default -F __start_kubectl kc
+#source <(kubectl completion bash | sed 's/kubectl/kc/g')
+
+# golang config
+export GOPATH="$HOME/code/go"
+export PATH=$GOPATH/bin:$PATH
+
+# stack install config
+export PATH="$HOME/.local/bin":$PATH
+
+# aws access keys
+
+# Functions
+
+ec2_instances() {
+  aws ec2 describe-instances | jq '.Reservations[].Instances[] | {name: (.Tags[] | select(.Key=="Name").Value), ipaddr: (.PrivateIpAddress)}'
+}
+
+# Modify the namespace for your kubectl's current context
+switch_kube_ns() {
+  if [[ -z $1 ]]; then
+    echo "usage: switch_kube_ns NAMESPACE"
+    return 1
+  fi
+
+  namespaces="$(kubectl get namespace -o jsonpath='{.items[*].metadata.name}')"
+
+  if [[ ${namespaces[@]} =~ $1 ]]; then
+    current_ctx="$(kubectl config current-context)"
+    kubectl config set-context "$current_ctx" --namespace="$1"
+  else
+    echo "Error namespace '$1' does not exist, type \`kubectl get ns\` for a complete list"
+  fi
+}
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# hub configs
+# add alias
+# configure GITHUB_HOST
+# tweak this so that it uses SSH and not HTTPS
