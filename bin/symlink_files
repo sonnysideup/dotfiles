@@ -1,7 +1,16 @@
 #!/usr/bin/env bash
 
-# TODO get rootdir
+set -e
 
-ln -s "$(pwd)/tmux.conf" ~/.tmux.conf
-ln -s "$(pwd)/gitconfig" ~/.gitconfig
-ln -s "$(pwd)/gitignore" ~/.gitignore
+configs=(
+  gitconfig
+  gitignore
+  tmux.conf
+  vimrc
+)
+
+for cfg in "${configs[@]}"; do
+  cfg_path="$(pwd)/$cfg"
+  ln -sf $cfg_path ~/.$cfg
+  echo "created $cfg_path"
+done
