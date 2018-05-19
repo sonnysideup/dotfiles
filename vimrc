@@ -17,9 +17,12 @@ Plugin 'hashivim/vim-terraform'
 Plugin 'tpope/vim-fireplace'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'rust-lang/rust.vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'cespare/vim-toml'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'vim-airline/vim-airline'
+Plugin 'fatih/vim-go'
+Plugin 'tpope/vim-commentary'
 
 " color schemes
 Plugin 'chriskempson/base16-vim'
@@ -40,19 +43,18 @@ if has("clipboard")
   set clipboard=unnamed
 endif
 
-"set background=dark
 "colorscheme base16-tomorrow-night
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
 
 set ruler
 set nowrap
 set incsearch
 set cursorline
+
 set cursorcolumn
+highlight CursorColumn cterm=NONE ctermfg=NONE ctermbg=236
+
 set colorcolumn=80
+highlight ColorColumn ctermbg=0
 set relativenumber
 set backspace=indent,eol,start " fix backspace in vIM 8.0
 
@@ -90,7 +92,7 @@ nnoremap <Leader>n :set relativenumber!<CR>       " toggle line numbers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " ctrlp
-let g:ctrlp_custom_ignore = 'target'
+let g:ctrlp_custom_ignore = 'vendor'
 
 " syntastic
 set statusline+=%#warningmsg#
@@ -103,3 +105,18 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_rust_checkers = ['cargo']
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" --- Golang Settings ---
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd Filetype go setlocal ts=8 sts=0 sw=8 noexpandtab
+
+autocmd Filetype go nmap <leader>r <Plug>(go-run)
+autocmd Filetype go nmap <leader>b <Plug>(go-build)
+autocmd Filetype go nmap <leader>t <Plug>(go-test)
+autocmd Filetype go nmap <leader>c <Plug>(go-coverage-tool)
+
+let g:go_highlight_types     = 1
+let g:go_highlight_fields    = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods   = 1

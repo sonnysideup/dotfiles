@@ -3,8 +3,10 @@
 set -e
 
 configs=(
+  alacritty.yml
   gitconfig
   gitignore
+  profile
   tmux.conf
   vimrc
 )
