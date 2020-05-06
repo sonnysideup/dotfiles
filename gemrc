@@ -1,4 +1,0 @@
-gem: --no-document --suggestions
-benchmark: false
-update_sources: true
-backtrace: true
