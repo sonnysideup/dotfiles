@@ -1,0 +1,17 @@
+[alias]
+  br = branch
+	cf = config
+  cm = commit
+  co = checkout
+  df = diff
+  pl = pull
+  ps = push
+  st = status
+[commit]
+	verbose = true
+[core]
+	editor = vim
+  excludesfile = ~/.gitignore
+[user]
+	name = Sonny Garcia
+	email = sonnygarcia@icloud.com

@@ -1,0 +1,13 @@
+# Show percentage of battery remaining in status bar
+defaults write com.apple.menuextra.battery ShowPercent YES
+
+# Configure clock format in status bar
+defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM HH:mm"
+
+# rerender the status bar
+killall -KILL SystemUIServer
+
+# iterm2
+/usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Option Key Sends\" 2" ~/Library/Preferences/com.googlecode.iterm2.plist
+/usr/libexec/PlistBuddy -c "Set :\"New Bookmarks\":0:\"Right Option Key Sends\" 2" ~/Library/Preferences/com.googlecode.iterm2.plist
+
