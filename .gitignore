@@ -1,5 +1,12 @@
 # global ignore file
 
+# macos folder metadata
 .DS_Store
-*.swp
+
+# vim temp files
 *.swn
+*.swo
+*.swp
+
+# jetbrains config dir
+.idea
