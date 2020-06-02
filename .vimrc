@@ -7,10 +7,14 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+
 " Initialize plugin system
 call plug#end()
 
 syntax on
+
+colorscheme onehalfdark
 
 set ruler
 set incsearch
@@ -31,4 +35,11 @@ set backspace=indent,eol,start
 autocmd BufWritePre * :%s/\s\+$//e
 
 let mapleader = " "
+
+" convenience shortcuts
 nnoremap <Leader>k :Explore<CR>
+nnoremap <Leader>a :edit #<CR>
+
+" fzf shortcuts
+nmap <Leader>f :GFiles<CR>
+nmap <Leader>F :Files<CR>
