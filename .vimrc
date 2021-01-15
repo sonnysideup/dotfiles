@@ -8,6 +8,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'hashivim/vim-terraform'
 
 " Initialize plugin system
 call plug#end()
@@ -15,6 +16,8 @@ call plug#end()
 syntax on
 
 colorscheme onehalfdark
+
+set clipboard=unnamed
 
 set ruler
 set incsearch
