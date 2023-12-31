@@ -15,3 +15,7 @@
 [user]
   name = Sonny Garcia
   email = sonnygarcia@icloud.com
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
