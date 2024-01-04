@@ -19,3 +19,5 @@
 	rebase = false
 [init]
 	defaultBranch = main
+[fetch]
+	prune = true
