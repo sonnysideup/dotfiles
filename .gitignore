@@ -10,3 +10,4 @@
 
 # jetbrains config dir
 .idea
+.aiignore
